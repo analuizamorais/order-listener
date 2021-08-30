@@ -60,3 +60,5 @@ export default new Service({
     someStates,
   },
 })
+
+export interface StatusChangeContext{}

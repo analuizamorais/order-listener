@@ -2,6 +2,10 @@ export async function allStates(
   ctx: StatusChangeContext,
   next: () => Promise<any>
 ) {
-  console.log(ctx.body)
+  const dataEvent = ctx.body
+  console.log(`ID:${dataEvent.orderId} StatusPagamento:${dataEvent.currentState} Data:${dataEvent.currentChangeDate}`)
+  //const idOrder = dataEvent.orderId
+  const idOrder = "teste"
   await next()
+  return idOrder
 }

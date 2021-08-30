@@ -13,25 +13,29 @@ const axios = require('axios');
 const interfaceFeed = require('./index')
 const workspace = 'projeto22acct'
 const account = 'hiringcoders202122'
-const orderID = '2'; //a orderID tem que receber a ID gerada ali no index.ts
+const orderID = './middlewares/allStates'; 
 
-const create = async () => {
-  return await axios({
-    url: `https://${account}.${workspace}.com.br/api/oms/pvt/orders/${orderID}`,
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'X-VTEX-API-AppKey': 'XXX',
-      'X-VTEX-API-AppToken': 'XXX'
-    }
-    //data: JSON.stringify(software)
-  })
-    .then((response) => {
-      return response.data;
-    })
-    .then(json => console.log(json))
-    .catch((err) => console.log(err))
+//a orderID tem que receber a ID gerada ali no index.ts
+console.log("oiii")
+console.log(orderID)
+
+
+const create = async (res) => {
+   return await axios.get({
+     url: `https://${account}.${workspace}.com.br/api/oms/pvt/orders/${orderID}`,
+       headers: {
+       Accept: 'application/json',
+     'Content-Type': 'application/json',
+     'X-VTEX-API-AppKey': 'XXX',
+     'X-VTEX-API-AppToken': 'XXX'
+   },
+   data: JSON.stringify(res)
+ })
+   .then((response) => {
+     return response.data;
+   })
+   .then(json => console.log(json))
+   .catch((err) => console.log(err))
 }
 
 //app.use(cors())
